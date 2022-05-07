@@ -1,0 +1,10 @@
+.container {
+    max-width: var(--default-layout-container);
+    margin: 0 auto;
+    padding: 0 2rem;
+    min-height: 1000px;
+    display: flex;
+}
+.content {
+    flex: 1;
+}
