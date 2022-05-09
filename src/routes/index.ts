@@ -12,7 +12,6 @@ const publicRoutes: IRoute[] = [
     {
         path: '/',
         component: Home,
-        layout: null,
     },
     {
         path: '/following',
