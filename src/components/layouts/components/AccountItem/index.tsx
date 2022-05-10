@@ -1,3 +1,4 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
@@ -17,8 +18,10 @@ const AccountItem = () => {
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
                     <span>hoaa.hassiii</span>
-                    {/* @ts-ignore */}
-                    <FontAwesomeIcon icon={faCheckCircle} className={cx('check-icon')} />
+                    <FontAwesomeIcon
+                        icon={faCheckCircle as IconProp}
+                        className={cx('check-icon')}
+                    />
                 </h4>
                 <p className={cx('username')}>hoaa.hassiii</p>
             </div>

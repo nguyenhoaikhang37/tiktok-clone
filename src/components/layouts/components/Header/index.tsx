@@ -50,14 +50,14 @@ export default function Header() {
                             spellCheck={false}
                         />
                         <button className={cx('clear')}>
-                            {/* @ts-ignore */}
-                            <FontAwesomeIcon icon={faCircleXmark} />
+                            <FontAwesomeIcon icon={faCircleXmark as IconProp} />
                         </button>
-                        {/* @ts-ignore */}
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                        <FontAwesomeIcon
+                            className={cx('loading')}
+                            icon={faSpinner as IconProp}
+                        />
                         <button className={cx('search-btn')}>
-                            {/* @ts-ignore */}
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
                         </button>
                     </div>
                 </Tippy>
