@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
@@ -12,17 +13,18 @@ import images from '@/assets/images';
 import styles from './Header.module.scss';
 import Popper from '../Popper';
 import SearchPopper from '../SearchPopper';
+import { Button } from '@/components/common';
 
 const cx = classNames.bind(styles);
 
 export default function Header() {
     const [searchResults, setSearchResults] = useState<any>([]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1, 2]);
-        }, 0);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSearchResults([1, 2]);
+    //     }, 0);
+    // }, []);
 
     return (
         <header className={cx('wrapper')}>
@@ -44,7 +46,7 @@ export default function Header() {
                 >
                     <div className={cx('search')}>
                         <input
-                            placeholder='Search accounts and videos'
+                            placeholder='Tìm kiếm tài khoản và video'
                             spellCheck={false}
                         />
                         <button className={cx('clear')}>
@@ -59,7 +61,15 @@ export default function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('actions')}></div>
+
+                <div className={cx('actions')}>
+                    <Button onClick={() => console.log('Log in click')} btnType='text'>
+                        Tải lên
+                    </Button>
+                    <Button onClick={() => alert('Log in click')} btnType='primary'>
+                        Đăng nhập
+                    </Button>
+                </div>
             </div>
         </header>
     );
