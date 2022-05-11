@@ -7,8 +7,8 @@ const cx = classNames.bind(styles);
 
 export interface ButtonProps {
     children: string | ReactElement;
-    btnStyle?: any;
     btnType?: any;
+    btnSize?: any;
     leftIcon?: ReactElement;
     rightIcon?: ReactElement;
 
@@ -17,12 +17,12 @@ export interface ButtonProps {
     href?: string;
     className?: any;
     target?: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export function Button({
     children,
-    btnStyle,
+    btnSize,
     btnType,
     leftIcon,
     rightIcon,
@@ -50,8 +50,8 @@ export function Button({
 
     const classes = cx('wrapper', {
         [className]: className,
-        [btnStyle]: btnStyle,
         [btnType]: btnType,
+        [btnSize]: btnSize,
     });
 
     return (

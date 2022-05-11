@@ -4,18 +4,37 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
+    faEarthAsia,
+    faEllipsisV,
+    faKeyboard,
     faMagnifyingGlass,
     faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
 
 import images from '@/assets/images';
 import styles from './Header.module.scss';
-import Popper from '../Popper';
-import SearchPopper from '../SearchPopper';
+import SearchPopper from '../Popper/SearchPopper';
 import { Button } from '@/components/common';
+import MenuPopper from '../Popper/MenuPopper';
+import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia as IconProp} />,
+        title: 'Tiếng Việt',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion as IconProp} />,
+        title: 'Phản hồi và trợ giúp',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard as IconProp} />,
+        title: 'Phím tắt trên bàn phím',
+    },
+];
 
 export default function Header() {
     const [searchResults, setSearchResults] = useState<any>([]);
@@ -33,17 +52,7 @@ export default function Header() {
                     <img src={images.logo} alt='Tiktok' />
                 </div>
 
-                <Tippy
-                    interactive
-                    visible={searchResults.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-results')} tabIndex={-1} {...attrs}>
-                            <Popper>
-                                <SearchPopper />
-                            </Popper>
-                        </div>
-                    )}
-                >
+                <SearchPopper>
                     <div className={cx('search')}>
                         <input
                             placeholder='Tìm kiếm tài khoản và video'
@@ -60,7 +69,7 @@ export default function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
                         </button>
                     </div>
-                </Tippy>
+                </SearchPopper>
 
                 <div className={cx('actions')}>
                     <Button onClick={() => console.log('Log in click')} btnType='text'>
@@ -69,6 +78,12 @@ export default function Header() {
                     <Button onClick={() => alert('Log in click')} btnType='primary'>
                         Đăng nhập
                     </Button>
+
+                    <MenuPopper items={MENU_ITEMS}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisV as IconProp} />
+                        </button>
+                    </MenuPopper>
                 </div>
             </div>
         </header>
