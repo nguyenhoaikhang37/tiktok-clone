@@ -8,21 +8,17 @@ const cx = classNames.bind(styles);
 
 export interface MenuItemProps {
     data: {
-        icon: ReactElement;
+        icon?: ReactElement;
         title: string;
         to?: string;
     };
+    onClick?: () => void;
 }
 
-export default function MenuItem({ data }: MenuItemProps) {
+export default function MenuItem({ data, onClick }: MenuItemProps) {
     const { icon, title, to } = data;
     return (
-        <Button
-            className={cx('menu-item')}
-            leftIcon={icon}
-            onClick={() => alert('Menu clicked')}
-            to={to}
-        >
+        <Button className={cx('menu-item')} leftIcon={icon} onClick={onClick} to={to}>
             {title}
         </Button>
     );

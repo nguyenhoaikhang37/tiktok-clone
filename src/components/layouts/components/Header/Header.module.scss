@@ -17,7 +17,7 @@
     max-width: var(--default-layout-container);
     height: 100%;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 var(--default-layout-horizontal);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -90,10 +90,13 @@
     }
 }
 
+.more-btn-wrapper {
+    margin-left: 18px;
+}
+
 .more-btn {
     display: inline-block;
     background-color: transparent;
-    margin-left: 28px;
     font-size: 2rem;
     cursor: pointer;
     padding: 8px;

@@ -24,6 +24,21 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia as IconProp} />,
         title: 'Tiếng Việt',
+        children: {
+            title: 'Ngôn ngữ',
+            data: [
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'eng',
+                    title: 'English',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion as IconProp} />,
@@ -44,6 +59,18 @@ export default function Header() {
     //         setSearchResults([1, 2]);
     //     }, 0);
     // }, []);
+
+    const handleMenuItemChange = (menuItem: any) => {
+        switch (menuItem.type) {
+            case 'language':
+                console.log('language', menuItem);
+                break;
+
+            default:
+                console.log('default func');
+                break;
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -79,11 +106,16 @@ export default function Header() {
                         Đăng nhập
                     </Button>
 
-                    <MenuPopper items={MENU_ITEMS}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisV as IconProp} />
-                        </button>
-                    </MenuPopper>
+                    <div className={cx('more-btn-wrapper')}>
+                        <MenuPopper
+                            items={MENU_ITEMS}
+                            onMenuChange={handleMenuItemChange}
+                        >
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisV as IconProp} />
+                            </button>
+                        </MenuPopper>
+                    </div>
                 </div>
             </div>
         </header>
