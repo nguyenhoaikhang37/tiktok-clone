@@ -13,6 +13,11 @@
     align-items: center;
 }
 
+.action-btn {
+    font-size: 2rem;
+    background: transparent;
+}
+
 .container {
     max-width: var(--default-layout-container);
     height: 100%;
@@ -21,6 +26,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.user-avatar {
+    position: relative;
+    margin-left: 12px;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    background: center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .search {

@@ -11,14 +11,22 @@ export interface MenuItemProps {
         icon?: ReactElement;
         title: string;
         to?: string;
+        separate?: boolean;
     };
     onClick?: () => void;
 }
 
 export default function MenuItem({ data, onClick }: MenuItemProps) {
-    const { icon, title, to } = data;
+    const { icon, title, to, separate } = data;
     return (
-        <Button className={cx('menu-item')} leftIcon={icon} onClick={onClick} to={to}>
+        <Button
+            className={cx('menu-item', {
+                separate,
+            })}
+            leftIcon={icon}
+            onClick={onClick}
+            to={to}
+        >
             {title}
         </Button>
     );

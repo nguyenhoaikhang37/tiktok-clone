@@ -6,17 +6,26 @@ import {
     faCircleXmark,
     faEarthAsia,
     faEllipsisV,
+    faGear,
     faKeyboard,
     faMagnifyingGlass,
+    faRightFromBracket,
     faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircle,
+    faCircleQuestion,
+    faMessage,
+    faUser,
+} from '@fortawesome/free-regular-svg-icons';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import images from '@/assets/images';
 import styles from './Header.module.scss';
 import SearchPopper from '../Popper/SearchPopper';
 import { Button } from '@/components/common';
 import MenuPopper from '../Popper/MenuPopper';
-import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -53,6 +62,32 @@ const MENU_ITEMS = [
 
 export default function Header() {
     const [searchResults, setSearchResults] = useState<any>([]);
+    const currentUser = true;
+
+    const USER_MENU_ITEMS = [
+        {
+            icon: <FontAwesomeIcon icon={faUser as IconProp} />,
+            title: 'Xem hồ sơ',
+            to: '/profile',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCircle as IconProp} />,
+            title: 'Nhận xu',
+            to: '/coin',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear as IconProp} />,
+            title: 'Cài đặt',
+            to: '/setting',
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <FontAwesomeIcon icon={faRightFromBracket as IconProp} />,
+            title: 'Đăng xuất',
+            to: '/logout',
+            separate: true,
+        },
+    ];
 
     // useEffect(() => {
     //     setTimeout(() => {
@@ -99,21 +134,55 @@ export default function Header() {
                 </SearchPopper>
 
                 <div className={cx('actions')}>
-                    <Button onClick={() => console.log('Log in click')} btnType='text'>
-                        Tải lên
-                    </Button>
-                    <Button onClick={() => alert('Log in click')} btnType='primary'>
-                        Đăng nhập
-                    </Button>
+                    {currentUser && (
+                        <>
+                            <Tippy
+                                delay={[0, 200]}
+                                placement='bottom'
+                                content='Tải video lên'
+                            >
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faMessage as IconProp} />
+                                </button>
+                            </Tippy>
+                        </>
+                    )}
 
+                    {!currentUser && (
+                        <>
+                            <Button
+                                onClick={() => console.log('Log in click')}
+                                btnType='text'
+                            >
+                                Tải lên
+                            </Button>
+                            <Button
+                                onClick={() => alert('Log in click')}
+                                btnType='primary'
+                            >
+                                Đăng nhập
+                            </Button>
+                        </>
+                    )}
                     <div className={cx('more-btn-wrapper')}>
                         <MenuPopper
-                            items={MENU_ITEMS}
+                            items={currentUser ? USER_MENU_ITEMS : MENU_ITEMS}
                             onMenuChange={handleMenuItemChange}
                         >
-                            <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisV as IconProp} />
-                            </button>
+                            <>
+                                {currentUser && (
+                                    <img
+                                        src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/f7d1af728f990606c8dccaf101610c67.jpeg?x-expires=1652533200&x-signature=vafs4kncqJvBTEnThnmJOne%2FCTg%3D'
+                                        alt='NHK'
+                                        className={cx('user-avatar')}
+                                    />
+                                )}
+                                {!currentUser && (
+                                    <button className={cx('more-btn')}>
+                                        <FontAwesomeIcon icon={faEllipsisV as IconProp} />
+                                    </button>
+                                )}
+                            </>
                         </MenuPopper>
                     </div>
                 </div>
