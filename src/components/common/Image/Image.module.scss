@@ -1,0 +1,16 @@
+.wrapper {
+    overflow: hidden;
+}
+
+.user-avatar {
+    position: relative;
+    margin-left: 4px;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    background: center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}

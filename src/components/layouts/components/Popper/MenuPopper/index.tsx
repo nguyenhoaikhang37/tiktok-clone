@@ -55,7 +55,7 @@ const MenuPopper = ({ children, items, onMenuChange }: MenuPopperProps) => {
     return (
         <Tippy
             offset={[12, 8]}
-            delay={[0, 700]}
+            delay={[0, 500]}
             interactive
             placement='bottom-end'
             render={(attrs) => (

@@ -14,8 +14,27 @@
 }
 
 .action-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
     font-size: 2rem;
     background: transparent;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: -3px;
+    right: 0px;
+    padding: 0px 6px;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--primary);
 }
 
 .container {
@@ -26,19 +45,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.user-avatar {
-    position: relative;
-    margin-left: 12px;
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-    background: center no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .search {

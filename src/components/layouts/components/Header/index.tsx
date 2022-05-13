@@ -8,16 +8,10 @@ import {
     faEllipsisV,
     faGear,
     faKeyboard,
-    faMagnifyingGlass,
     faRightFromBracket,
     faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-    faCircle,
-    faCircleQuestion,
-    faMessage,
-    faUser,
-} from '@fortawesome/free-regular-svg-icons';
+import { faCircle, faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
@@ -26,6 +20,13 @@ import styles from './Header.module.scss';
 import SearchPopper from '../Popper/SearchPopper';
 import { Button } from '@/components/common';
 import MenuPopper from '../Popper/MenuPopper';
+import {
+    InboxIcon,
+    MessageIcon,
+    SearchIcon,
+    UploadIcon,
+} from '@/components/common/Icons';
+import Image from '@/components/common/Image';
 
 const cx = classNames.bind(styles);
 
@@ -128,7 +129,7 @@ export default function Header() {
                             icon={faSpinner as IconProp}
                         />
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
+                            <SearchIcon />
                         </button>
                     </div>
                 </SearchPopper>
@@ -137,12 +138,23 @@ export default function Header() {
                     {currentUser && (
                         <>
                             <Tippy
-                                delay={[0, 200]}
+                                delay={[0, 50]}
                                 placement='bottom'
                                 content='Tải video lên'
                             >
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage as IconProp} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content='Tin nhắn' placement='bottom'>
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content='Hộp thư' placement='bottom'>
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -171,10 +183,10 @@ export default function Header() {
                         >
                             <>
                                 {currentUser && (
-                                    <img
-                                        src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/f7d1af728f990606c8dccaf101610c67.jpeg?x-expires=1652533200&x-signature=vafs4kncqJvBTEnThnmJOne%2FCTg%3D'
+                                    <Image
+                                        src='https://static.fullstack.edu.vn/static/media/f8-icon.7ad2b161d5e80c87e516.png'
                                         alt='NHK'
-                                        className={cx('user-avatar')}
+                                        className='user-avatar'
                                     />
                                 )}
                                 {!currentUser && (
