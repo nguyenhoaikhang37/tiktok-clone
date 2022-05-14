@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
 import Popper from '@/components/layouts/components/Popper';
@@ -8,16 +8,22 @@ import styles from './SearchPopper.module.scss';
 
 const cx = classNames.bind(styles);
 
-const SearchPopper = ({ children }: { children: ReactElement }) => {
+interface SearchPopperProps {
+    children: ReactElement;
+    visible?: boolean;
+    onClickOutside?: () => void;
+}
+
+const SearchPopper = ({ children, ...props }: SearchPopperProps) => {
     return (
-        <Tippy
+        <HeadlessTippy
+            {...props}
             interactive
-            visible={false}
             render={(attrs) => (
                 <div className={cx('search-results')} tabIndex={-1} {...attrs}>
                     <Popper>
                         <div className={cx('wrapper')}>
-                            <h4 className={cx('search-label')}>Accounts</h4>
+                            <h4 className={cx('search-label')}>Tài khoản</h4>
                             <AccountItem />
                             <AccountItem />
                             <AccountItem />
@@ -40,7 +46,7 @@ const SearchPopper = ({ children }: { children: ReactElement }) => {
             )}
         >
             {children}
-        </Tippy>
+        </HeadlessTippy>
     );
 };
 

@@ -1,3 +1,4 @@
+import Image from '@/components/common/Image';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,7 +11,7 @@ const cx = classNames.bind(styles);
 const AccountItem = () => {
     return (
         <div className={cx('wrapper')}>
-            <img
+            <Image
                 src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/6e5a87dd45745546ec30b3abf300ec75~c5_100x100.jpeg?x-expires=1652245200&x-signature=p2DzD5pyThJVj2CUJ3yb2WHffGw%3D'
                 alt='avatar'
                 className={cx('avatar')}

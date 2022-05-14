@@ -1,32 +1,24 @@
-import { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faCircle, faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 import {
-    faCircleXmark,
     faEarthAsia,
     faEllipsisV,
     faGear,
     faKeyboard,
     faRightFromBracket,
-    faSpinner,
 } from '@fortawesome/free-solid-svg-icons';
-import { faCircle, faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
+import classNames from 'classnames/bind';
 import 'tippy.js/dist/tippy.css';
 
-import images from '@/assets/images';
 import styles from './Header.module.scss';
-import SearchPopper from '../Popper/SearchPopper';
+import images from '@/assets/images';
 import { Button } from '@/components/common';
-import MenuPopper from '../Popper/MenuPopper';
-import {
-    InboxIcon,
-    MessageIcon,
-    SearchIcon,
-    UploadIcon,
-} from '@/components/common/Icons';
+import { InboxIcon, MessageIcon, UploadIcon } from '@/components/common/Icons';
 import Image from '@/components/common/Image';
+import MenuPopper from '../Popper/MenuPopper';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -62,7 +54,6 @@ const MENU_ITEMS = [
 ];
 
 export default function Header() {
-    const [searchResults, setSearchResults] = useState<any>([]);
     const currentUser = true;
 
     const USER_MENU_ITEMS = [
@@ -90,12 +81,6 @@ export default function Header() {
         },
     ];
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setSearchResults([1, 2]);
-    //     }, 0);
-    // }, []);
-
     const handleMenuItemChange = (menuItem: any) => {
         switch (menuItem.type) {
             case 'language':
@@ -115,24 +100,8 @@ export default function Header() {
                     <img src={images.logo} alt='Tiktok' />
                 </div>
 
-                <SearchPopper>
-                    <div className={cx('search')}>
-                        <input
-                            placeholder='Tìm kiếm tài khoản và video'
-                            spellCheck={false}
-                        />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark as IconProp} />
-                        </button>
-                        <FontAwesomeIcon
-                            className={cx('loading')}
-                            icon={faSpinner as IconProp}
-                        />
-                        <button className={cx('search-btn')}>
-                            <SearchIcon />
-                        </button>
-                    </div>
-                </SearchPopper>
+                {/* Search */}
+                <Search />
 
                 <div className={cx('actions')}>
                     {currentUser && (
