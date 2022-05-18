@@ -8,13 +8,13 @@ import { SearchIcon } from '@/components/common/Icons';
 import SearchPopper from '../Popper/SearchPopper';
 import styles from './Search.module.scss';
 import IUser from '@/models/User';
-import useDebounce from '@/hooks/useDebounce';
+import { useDebounce } from '@/hooks';
 
 const cx = classNames.bind(styles);
 
 const Search = () => {
     const [searchValue, setSearchValue] = useState<string>('');
-    const debounceValue = useDebounce<string>(searchValue);
+    const debouncedValue = useDebounce<string>(searchValue);
 
     const [searchResults, setSearchResults] = useState<IUser[]>([]);
     const [showResult, setShowResult] = useState(true);
@@ -23,7 +23,7 @@ const Search = () => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (!debounceValue.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResults([]);
             return;
         }
@@ -32,7 +32,7 @@ const Search = () => {
 
         fetch(
             `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                debounceValue
+                debouncedValue
             )}&type=less`
         )
             .then((res) => {
@@ -46,7 +46,7 @@ const Search = () => {
                 setLoading(false);
                 console.log('⭐️ · file: index.tsx · line 26 · error', error);
             });
-    }, [debounceValue]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -70,7 +70,10 @@ const Search = () => {
                     spellCheck={false}
                     ref={inputRef}
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => {
+                        if (searchValue.length === 0 && e.target.value === ' ') return;
+                        setSearchValue(e.target.value);
+                    }}
                     onFocus={() => setShowResult(true)}
                 />
                 {Boolean(searchValue) && !loading && (
