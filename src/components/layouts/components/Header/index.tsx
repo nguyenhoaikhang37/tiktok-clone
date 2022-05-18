@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faCircle, faCircleQuestion, faUser } from '@fortawesome/free-regular-svg-icons';
+import {
+    faCircleQuestion,
+    faMoneyBill1,
+    faUser,
+} from '@fortawesome/free-regular-svg-icons';
 import {
     faEarthAsia,
     faEllipsisV,
@@ -63,7 +67,7 @@ export default function Header() {
             to: '/profile',
         },
         {
-            icon: <FontAwesomeIcon icon={faCircle as IconProp} />,
+            icon: <FontAwesomeIcon icon={faMoneyBill1 as IconProp} />,
             title: 'Nhận xu',
             to: '/coin',
         },

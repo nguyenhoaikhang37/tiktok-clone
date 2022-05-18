@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { HeaderOnly } from '../components/layouts';
-import { Following, Home, Upload } from '../pages';
+import { Following, Home, Upload, Profile, NotFound } from '../pages';
 
 type IRoute = {
     path: string;
@@ -14,6 +14,10 @@ const publicRoutes: IRoute[] = [
         component: Home,
     },
     {
+        path: '/@:nickname',
+        component: Profile,
+    },
+    {
         path: '/following',
         component: Following,
     },
@@ -21,6 +25,10 @@ const publicRoutes: IRoute[] = [
         path: '/upload',
         component: Upload,
         layout: HeaderOnly,
+    },
+    {
+        path: '*',
+        component: NotFound,
     },
 ];
 
