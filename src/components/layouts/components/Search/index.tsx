@@ -10,6 +10,8 @@ import styles from './Search.module.scss';
 import IUser from '@/models/User';
 import { useDebounce } from '@/hooks';
 
+import * as searchApi from '@/apis/searchApi';
+
 const cx = classNames.bind(styles);
 
 const Search = () => {
@@ -28,24 +30,19 @@ const Search = () => {
             return;
         }
 
-        setLoading(true);
-
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                debouncedValue
-            )}&type=less`
-        )
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
+        (async () => {
+            try {
+                setLoading(true);
+                const response = await searchApi.search({
+                    q: debouncedValue,
+                    type: 'less',
+                });
+                setSearchResults(response.data);
+            } catch (error) {
                 setLoading(false);
-                setSearchResults(res.data);
-            })
-            .catch((error) => {
-                setLoading(false);
-                console.log('⭐️ · file: index.tsx · line 26 · error', error);
-            });
+            }
+        })();
+        setLoading(false);
     }, [debouncedValue]);
 
     const handleClear = () => {
@@ -71,7 +68,8 @@ const Search = () => {
                     ref={inputRef}
                     value={searchValue}
                     onChange={(e) => {
-                        if (searchValue.length === 0 && e.target.value === ' ') return;
+                        if (searchValue.length === 0 && e.target.value.trim() === '')
+                            return;
                         setSearchValue(e.target.value);
                     }}
                     onFocus={() => setShowResult(true)}
