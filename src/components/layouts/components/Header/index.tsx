@@ -12,8 +12,9 @@ import {
     faKeyboard,
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
@@ -23,6 +24,7 @@ import { InboxIcon, MessageIcon, UploadIcon } from '@/components/common/Icons';
 import Image from '@/components/common/Image';
 import MenuPopper from '../Popper/MenuPopper';
 import Search from '../Search';
+import { routesConfig } from '@/config';
 
 const cx = classNames.bind(styles);
 
@@ -100,9 +102,9 @@ export default function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('container')}>
-                <div className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt='Tiktok' />
-                </div>
+                </Link>
 
                 {/* Search */}
                 <Search />

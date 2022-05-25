@@ -24,10 +24,16 @@ interface IHistory {
 interface MenuPopperProps {
     children: ReactElement;
     items: IMenuItem[];
+    hideOnClick?: boolean;
     onMenuChange: (item: IMenuItem) => void;
 }
 
-const MenuPopper = ({ children, items, onMenuChange }: MenuPopperProps) => {
+const MenuPopper = ({
+    children,
+    items,
+    hideOnClick = false,
+    onMenuChange,
+}: MenuPopperProps) => {
     const [history, setHistory] = useState<IHistory[]>([{ data: items }]);
     const currentMenu = history[history.length - 1];
 
@@ -54,6 +60,7 @@ const MenuPopper = ({ children, items, onMenuChange }: MenuPopperProps) => {
 
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             offset={[12, 8]}
             delay={[0, 500]}
             interactive

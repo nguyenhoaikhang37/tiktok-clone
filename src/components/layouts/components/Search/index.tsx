@@ -41,8 +41,8 @@ const Search = () => {
             } catch (error) {
                 setLoading(false);
             }
+            setLoading(false);
         })();
-        setLoading(false);
     }, [debouncedValue]);
 
     const handleClear = () => {
@@ -85,7 +85,10 @@ const Search = () => {
                         icon={faSpinner as IconProp}
                     />
                 )}
-                <button className={cx('search-btn')}>
+                <button
+                    className={cx('search-btn')}
+                    onMouseDown={(e) => e.preventDefault()}
+                >
                     <SearchIcon />
                 </button>
             </div>

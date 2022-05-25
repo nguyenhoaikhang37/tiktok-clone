@@ -27,7 +27,7 @@ const SearchPopper = ({ children, data, ...props }: SearchPopperProps) => {
                         <div className={cx('wrapper')}>
                             <h4 className={cx('search-label')}>Tài khoản</h4>
                             {data.map((item: IUser) => (
-                                <AccountItem data={item} />
+                                <AccountItem key={item.id} data={item} />
                             ))}
                         </div>
                     </Popper>
