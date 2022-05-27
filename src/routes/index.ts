@@ -1,6 +1,6 @@
-import { routesConfig } from '@/config';
 import { ReactElement } from 'react';
-import { HeaderOnly } from '../components/layouts';
+import { routesConfig } from '@/config';
+import { HeaderOnly } from '@/layouts';
 import { Following, Home, Upload, Profile, NotFound } from '../pages';
 
 type IRoute = {

@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import classNames from 'classnames/bind';
-import styles from './DefaultLayout.module.scss';
+import styles from './MainLayout.module.scss';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
 const cx = classNames.bind(styles);
 
-export function DefaultLayout({ children }: { children: ReactElement }) {
+export function MainLayout({ children }: { children: ReactElement }) {
     return (
         <div className={cx('wrapper')}>
             <Header />

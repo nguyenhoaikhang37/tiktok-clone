@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
-import Popper from '@/components/layouts/components/Popper';
+import Popper from '@/layouts/components/Popper';
 import AccountItem from '../../AccountItem';
 import styles from './SearchPopper.module.scss';
 import IUser from '@/models/User';
