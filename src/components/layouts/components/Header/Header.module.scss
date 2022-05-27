@@ -4,8 +4,14 @@
     --search-btn-width: 52px;
     --search-top-spacer: 9px;
 
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: var(--header-height, 60px);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    background-color: var(--white);
 }
 
 .actions {
