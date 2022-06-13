@@ -29,11 +29,11 @@ interface MenuPopperProps {
 }
 
 const MenuPopper = ({
-    children,
-    items,
-    hideOnClick = false,
-    onMenuChange,
-}: MenuPopperProps) => {
+                        children,
+                        items,
+                        hideOnClick = false,
+                        onMenuChange,
+                    }: MenuPopperProps) => {
     const [history, setHistory] = useState<IHistory[]>([{ data: items }]);
     const currentMenu = history[history.length - 1];
 
@@ -58,6 +58,22 @@ const MenuPopper = ({
         setHistory((prev) => prev.slice(0, prev.length - 1));
     };
 
+    const renderResult = (attrs: { 'data-placement': any, 'data-reference-hidden'?: string | undefined, 'data-escaped'?: string | undefined }) => (
+        <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
+            <Popper>
+                {history.length > 1 && (
+                    <HeaderMenu
+                        title={currentMenu.title}
+                        onBackClick={handleBackBtnClick}
+                    />
+                )}
+                <div className={cx('wrapper')}>{renderItems()}</div>
+            </Popper>
+        </div>
+    );
+
+    const handleResetToFirstMenu = () => setHistory(prev => prev.slice(0, 1))
+
     return (
         <Tippy
             hideOnClick={hideOnClick}
@@ -65,19 +81,8 @@ const MenuPopper = ({
             delay={[0, 500]}
             interactive
             placement='bottom-end'
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
-                    <Popper>
-                        {history.length > 1 && (
-                            <HeaderMenu
-                                title={currentMenu.title}
-                                onBackClick={handleBackBtnClick}
-                            />
-                        )}
-                        <div className={cx('wrapper')}>{renderItems()}</div>
-                    </Popper>
-                </div>
-            )}
+            onHide={handleResetToFirstMenu}
+            render={renderResult}
         >
             <div className={cx('wrapper')}>{children}</div>
         </Tippy>

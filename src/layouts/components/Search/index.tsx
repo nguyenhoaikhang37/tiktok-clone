@@ -19,7 +19,7 @@ const Search = () => {
     const debouncedValue = useDebounce<string>(searchValue);
 
     const [searchResults, setSearchResults] = useState<IUser[]>([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
