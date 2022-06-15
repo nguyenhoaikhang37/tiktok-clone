@@ -3,4 +3,5 @@ export const routesConfig = {
     profile: '/@:nickname',
     following: '/following',
     upload: '/upload',
+    live: '/live',
 };
