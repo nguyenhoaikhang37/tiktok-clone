@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 export interface ButtonProps {
     children: string | ReactElement;
-    btnType?: any;
+    btnType?: 'text' | 'primary' | 'outline';
     btnSize?: any;
     leftIcon?: ReactElement;
     rightIcon?: ReactElement;
@@ -21,19 +21,19 @@ export interface ButtonProps {
 }
 
 export function Button({
-    children,
-    btnSize,
-    btnType,
-    leftIcon,
-    rightIcon,
+                           children,
+                           btnSize,
+                           btnType = 'text',
+                           leftIcon,
+                           rightIcon,
 
-    disabled,
-    to,
-    href,
-    className,
-    onClick,
-    ...passProps
-}: ButtonProps) {
+                           disabled,
+                           to,
+                           href,
+                           className,
+                           onClick,
+                           ...passProps
+                       }: ButtonProps) {
     let Comp: any = 'button';
     const props: any = {
         onClick,

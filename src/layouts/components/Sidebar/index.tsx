@@ -11,6 +11,7 @@ import {
     LiveIcon,
     LiveActiveIcon,
 } from '@/components/common/Icons';
+import SuggestedAccounts from '@/layouts/components/Sidebar/ui/SuggestedAccounts';
 
 const cx = classNames.bind(styles);
 
@@ -24,6 +25,9 @@ export default function Sidebar() {
                           activeIcon={<UserGroupActiveIcon />} />
                 <MenuItem title='LIVE' to={routesConfig.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
+
+            <SuggestedAccounts label='Tài khoản được đề xuất' />
+            <SuggestedAccounts label='Các tài khoản đang follow' />
         </aside>
     );
 }
