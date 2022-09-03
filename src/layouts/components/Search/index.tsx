@@ -34,7 +34,8 @@ const Search = () => {
             try {
                 setLoading(true);
                 const response = await searchApi.search({
-                    q: debouncedValue,
+                    // encodeURIComponent: để mã hoá kí tự ng dùng nhập vào (VD: nhập & => %26)
+                    q: encodeURIComponent(debouncedValue),
                     type: 'less',
                 });
                 setSearchResults(response.data);
