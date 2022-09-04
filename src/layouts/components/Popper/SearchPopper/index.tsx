@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
@@ -17,6 +17,12 @@ interface SearchPopperProps {
 }
 
 const SearchPopper = ({ children, data, ...props }: SearchPopperProps) => {
+    const renderListAccount = useMemo(() => {
+        return data.map((item: IUser) => (
+            <AccountItem key={item.id} data={item} />
+        ));
+    }, [data]);
+
     return (
         // Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
         <div>
@@ -28,9 +34,7 @@ const SearchPopper = ({ children, data, ...props }: SearchPopperProps) => {
                         <Popper>
                             <div className={cx('wrapper')}>
                                 <h4 className={cx('search-label')}>Tài khoản</h4>
-                                {data.map((item: IUser) => (
-                                    <AccountItem key={item.id} data={item} />
-                                ))}
+                                {renderListAccount}
                             </div>
                         </Popper>
                     </div>
