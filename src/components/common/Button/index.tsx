@@ -21,19 +21,19 @@ export interface ButtonProps {
 }
 
 export function Button({
-                           children,
-                           btnSize,
-                           btnType = 'text',
-                           leftIcon,
-                           rightIcon,
+    children,
+    btnSize,
+    btnType = 'text',
+    leftIcon,
+    rightIcon,
 
-                           disabled,
-                           to,
-                           href,
-                           className,
-                           onClick,
-                           ...passProps
-                       }: ButtonProps) {
+    disabled,
+    to,
+    href,
+    className,
+    onClick,
+    ...passProps
+}: ButtonProps) {
     let Comp: any = 'button';
     const props: any = {
         onClick,

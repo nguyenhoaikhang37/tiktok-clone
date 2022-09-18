@@ -1,3 +1,3 @@
 export function Following() {
-  return <h2>Following Page</h2>;
+    return <h2>Following Page</h2>;
 }

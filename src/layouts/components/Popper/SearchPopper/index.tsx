@@ -18,9 +18,7 @@ interface SearchPopperProps {
 
 const SearchPopper = ({ children, data, ...props }: SearchPopperProps) => {
     const renderListAccount = useMemo(() => {
-        return data.map((item: IUser) => (
-            <AccountItem key={item.id} data={item} />
-        ));
+        return data.map((item: IUser) => <AccountItem key={item.id} data={item} />);
     }, [data]);
 
     return (

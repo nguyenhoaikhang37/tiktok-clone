@@ -24,7 +24,10 @@ function AccountPreview() {
             <div className={cx('body')}>
                 <p className={cx('nickname')}>
                     <strong>quocnguyenphu</strong>
-                    <FontAwesomeIcon className={cx('check')} icon={faCheckCircle as IconProp} />
+                    <FontAwesomeIcon
+                        className={cx('check')}
+                        icon={faCheckCircle as IconProp}
+                    />
                 </p>
                 <p className={cx('name')}>Quốc Nguyễn Phú</p>
                 <p className={cx('analytics')}>

@@ -7,10 +7,10 @@ import styles from './Menu.module.scss';
 const cx = classNames.bind(styles);
 
 type MenuItemProps = {
-    title: string,
-    icon: ReactNode,
-    activeIcon: ReactNode,
-    to: string
+    title: string;
+    icon: ReactNode;
+    activeIcon: ReactNode;
+    to: string;
 };
 
 const MenuItem = ({ title, to, icon, activeIcon }: MenuItemProps) => {
